@@ -192,12 +192,11 @@ export default function App() {
               viewport={{ once: true }}
               className="relative aspect-square rounded-3xl overflow-hidden bg-slate-100 shadow-xl"
             >
-              <img 
-                src="https://drive.google.com/file/d/1GQ8wnYbFFhuVh5kMy46BaxCa-FmzHlUj/view?usp=drive_link" 
-                alt="Prakashraja A" 
-                className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
-                referrerPolicy="no-referrer"
-              />
+<img 
+  src="https://drive.google.com/uc?export=view&id=1GQ8wnYbFFhuVh5kMy46BaxCa-FmzHlUj"
+  alt="Prakashraja A"
+  className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
+/>
               <div className="absolute inset-0 bg-indigo-600/10 mix-blend-multiply" />
             </motion.div>
           </div>
