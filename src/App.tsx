@@ -53,7 +53,7 @@ const CERTIFICATES = [
     issuer: "IBM Career Education Program",
     date: "October 14, 2024",
     description: "Successfully completed and received a passing grade in Front End Technologies (CEFET1IN) provided by IBMCE.",
-    image: "https://images.unsplash.com/photo-1589330694653-ded6df03f754?q=80&w=1000&auto=format&fit=crop",
+    image: "https://courses.ibmcep.cognitiveclass.ai/certificates/63d14ae0a2924959910e288156547a74",
     link: "https://courses.ibmcep.cognitiveclass.ai/certificates/63d14ae0a2924959910e288156547a74"
   }
 ];
