@@ -17,7 +17,9 @@ import {
   GraduationCap, 
   Briefcase,
   ChevronRight,
-  Copyright
+  Copyright,
+  Award,
+  ExternalLink as LinkIcon
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 
@@ -45,6 +47,17 @@ const PROJECTS = [
   }
 ];
 
+const CERTIFICATES = [
+  {
+    title: "Front End Technologies",
+    issuer: "IBM Career Education Program",
+    date: "October 14, 2024",
+    description: "Successfully completed and received a passing grade in Front End Technologies (CEFET1IN) provided by IBMCE.",
+    image: "https://images.unsplash.com/photo-1589330694653-ded6df03f754?q=80&w=1000&auto=format&fit=crop",
+    link: "https://courses.ibmcep.cognitiveclass.ai/certificates/63d14ae0a2924959910e288156547a74"
+  }
+];
+
 const SKILLS = {
   "Programming": ["Python", "Basic C", "Basic Java", "JavaScript"],
   "Data & AI": ["Machine Learning", "Data Engineering", "Data Analysis", "EDA"],
@@ -56,12 +69,12 @@ export default function App() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['home', 'about', 'skills', 'projects', 'education'];
+      const sections = ['home', 'about', 'skills', 'projects', 'certificates', 'education'];
       const current = sections.find(section => {
         const element = document.getElementById(section);
         if (element) {
           const rect = element.getBoundingClientRect();
-          return rect.top <= 100 && rect.bottom >= 100;
+          return rect.top <= 150 && rect.bottom >= 150;
         }
         return false;
       });
@@ -85,7 +98,7 @@ export default function App() {
             PRAKASHRAJA A
           </motion.span>
           <div className="hidden md:flex items-center gap-8">
-            {['home', 'about', 'skills', 'projects', 'education'].map((item) => (
+            {['home', 'about', 'skills', 'projects', 'certificates', 'education'].map((item) => (
               <a
                 key={item}
                 href={`#${item}`}
@@ -177,11 +190,11 @@ export default function App() {
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              className="relative aspect-square rounded-3xl overflow-hidden bg-slate-100"
+              className="relative aspect-square rounded-3xl overflow-hidden bg-slate-100 shadow-xl"
             >
               <img 
-                src="src\Prakashraja.pdf" 
-                alt="Profile Workspace" 
+                src="src\WhatsApp Image 2026-03-06 at 10.08.58 AM.jpeg" 
+                alt="Prakashraja A" 
                 className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
                 referrerPolicy="no-referrer"
               />
@@ -265,8 +278,61 @@ export default function App() {
         </div>
       </section>
 
+      {/* Certificates Section */}
+      <section id="certificates" className="py-20 px-6 bg-white">
+        <div className="max-w-5xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl font-bold mb-4">Certifications</h2>
+            <p className="text-slate-500">Professional recognitions and verified achievements.</p>
+          </div>
+          <div className="grid md:grid-cols-1 gap-12">
+            {CERTIFICATES.map((cert, idx) => (
+              <motion.div 
+                key={cert.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="flex flex-col lg:flex-row gap-10 items-center bg-slate-50 p-8 rounded-[2.5rem] border border-slate-100"
+              >
+                <div className="w-full lg:w-1/2 aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl border-8 border-white">
+                  <img 
+                    src={cert.image} 
+                    alt={cert.title} 
+                    className="w-full h-full object-cover"
+                    referrerPolicy="no-referrer"
+                  />
+                </div>
+                <div className="w-full lg:w-1/2">
+                  <div className="flex items-center gap-3 mb-6">
+                    <div className="w-12 h-12 bg-indigo-600 rounded-2xl flex items-center justify-center text-white shadow-lg shadow-indigo-200">
+                      <Award className="w-6 h-6" />
+                    </div>
+                    <div>
+                      <p className="text-xs font-bold text-indigo-600 uppercase tracking-widest">{cert.issuer}</p>
+                      <p className="text-xs text-slate-400 font-medium">{cert.date}</p>
+                    </div>
+                  </div>
+                  <h3 className="text-2xl font-bold mb-4 text-slate-900">{cert.title}</h3>
+                  <p className="text-slate-600 leading-relaxed mb-8">
+                    {cert.description}
+                  </p>
+                  <a 
+                    href={cert.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-6 py-3 bg-slate-900 text-white rounded-xl font-bold text-sm hover:bg-indigo-600 transition-all shadow-lg shadow-slate-200"
+                  >
+                    Verify Certificate <ExternalLink className="w-4 h-4" />
+                  </a>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Education Section */}
-      <section id="education" className="py-20 px-6">
+      <section id="education" className="py-20 px-6 bg-slate-50">
         <div className="max-w-5xl mx-auto">
           <h2 className="text-3xl font-bold mb-12 text-center">Education</h2>
           <div className="space-y-6">
