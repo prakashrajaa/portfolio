@@ -81,24 +81,21 @@ function ProfilePicture({ className }) {
       <img
         src={PROFILE_IMAGE_URL}
         alt="Prakashraja"
-        className={className}
+        className={`w-40 h-40 object-cover rounded-full ${className}`}
         onError={() => setImgError(true)}
       />
     );
   }
 
-  // Fallback: stylised initials avatar
+  // Fallback avatar
   return (
-    <div className="w-50 h-50 flex flex-col items-center justify-center bg-gradient-to-br from-indigo-100 to-slate-200 select-none">
-      <div className="w-20 h-20 rounded-full bg-indigo-600 flex items-center justify-center mb-4 shadow-xl">
-        <span className="text-white text-3xl font-black tracking-tight">PA</span>
+    <div className="w-40 h-40 flex flex-col items-center justify-center bg-gradient-to-br from-indigo-100 to-slate-200 rounded-full shadow-lg">
+      
+      <div className="w-16 h-16 rounded-full bg-indigo-600 flex items-center justify-center mb-2">
+        <span className="text-white text-xl font-bold">PA</span>
       </div>
-      <span className="text-slate-500 text-sm font-semibold">Prakashraja A</span>
-      {!PROFILE_IMAGE_URL && (
-        <span className="text-slate-400 text-[10px] mt-2 px-4 text-center leading-relaxed">
-          Set PROFILE_IMAGE_URL in App.jsx to display your photo
-        </span>
-      )}
+
+      <span className="text-slate-600 text-xs font-semibold">Prakashraja</span>
     </div>
   );
 }
