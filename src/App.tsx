@@ -20,7 +20,9 @@ import {
   Copyright,
   Award,
   CheckCircle2,
-  User
+  User,
+  X,
+  ChevronDown
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 
@@ -60,18 +62,61 @@ const CERTIFICATES = [
 ];
 
 const SKILLS = {
-  "Programming": ["Python", "Basic C", "Basic Java", "JavaScript"],
-  "Data & AI": ["Machine Learning", "Data Engineering", "Data Analysis", "EDA"],
-  "Tools": ["ReactJS", "Node.js", "Excel Dashboards", "Power BI", "Matplotlib", "Seaborn"]
+  "Programming": {
+    icon: "Terminal",
+    color: "indigo",
+    items: ["Python", "Basic C", "Basic Java", "JavaScript"],
+    description: "Core programming languages I use to build software and automate solutions."
+  },
+  "Data & AI": {
+    icon: "BrainCircuit",
+    color: "violet",
+    items: ["Machine Learning", "Data Engineering", "Data Analysis", "EDA"],
+    description: "Skills in building intelligent systems and extracting insights from data."
+  },
+  "Tools": {
+    icon: "Database",
+    color: "sky",
+    items: ["ReactJS", "Node.js", "Excel Dashboards", "Power BI", "Matplotlib", "Seaborn"],
+    description: "Frameworks and tools I use for development, visualization, and reporting."
+  }
 };
 
-// ─── Profile Picture Component ───────────────────────────────────────────────
-// Replace PROFILE_IMAGE_URL with your own hosted image URL (e.g. from Google Drive,
-// Cloudinary, GitHub raw, etc.) to show your actual photo.
-// Example: const PROFILE_IMAGE_URL = "https://i.imgur.com/yourimage.jpg";
+const COLOR_MAP = {
+  indigo: {
+    bg: "bg-indigo-50",
+    text: "text-indigo-600",
+    border: "border-indigo-200",
+    badge: "bg-indigo-100 text-indigo-700 border-indigo-200",
+    shadow: "hover:shadow-indigo-100",
+    ring: "ring-indigo-300",
+    dot: "bg-indigo-500",
+    iconBg: "bg-indigo-600",
+  },
+  violet: {
+    bg: "bg-violet-50",
+    text: "text-violet-600",
+    border: "border-violet-200",
+    badge: "bg-violet-100 text-violet-700 border-violet-200",
+    shadow: "hover:shadow-violet-100",
+    ring: "ring-violet-300",
+    dot: "bg-violet-500",
+    iconBg: "bg-violet-600",
+  },
+  sky: {
+    bg: "bg-sky-50",
+    text: "text-sky-600",
+    border: "border-sky-200",
+    badge: "bg-sky-100 text-sky-700 border-sky-200",
+    shadow: "hover:shadow-sky-100",
+    ring: "ring-sky-300",
+    dot: "bg-sky-500",
+    iconBg: "bg-sky-600",
+  }
+};
+
 const PROFILE_IMAGE_URL =
   "https://raw.githubusercontent.com/prakashrajaa/portfolio/300965d6a37cba2808aff2a58b65a8fc2c378b1d/src/WhatsApp%20Image%202026-03-06%20at%2010.08.58%20AM.jpeg";
- // ← paste your image URL here
 
 function ProfilePicture({ className }) {
   const [imgError, setImgError] = useState(false);
@@ -87,22 +132,16 @@ function ProfilePicture({ className }) {
     );
   }
 
-  // Fallback avatar
   return (
     <div className="w-40 h-40 flex flex-col items-center justify-center bg-gradient-to-br from-indigo-100 to-slate-200 rounded-full shadow-lg">
-      
       <div className="w-16 h-16 rounded-full bg-indigo-600 flex items-center justify-center mb-2">
         <span className="text-white text-xl font-bold">PA</span>
       </div>
-
       <span className="text-slate-600 text-xs font-semibold">Prakashraja</span>
     </div>
   );
 }
 
-// ─── Certificate Card ─────────────────────────────────────────────────────────
-// The certificate link points to an HTML verification page — not an image —
-// so we render a styled card instead of using it as an <img> src.
 function CertificateCard({ cert }) {
   return (
     <motion.div
@@ -111,14 +150,11 @@ function CertificateCard({ cert }) {
       viewport={{ once: true }}
       className="flex flex-col lg:flex-row gap-10 items-center bg-slate-50 p-8 rounded-[2.5rem] border border-slate-100"
     >
-      {/* Visual certificate placeholder */}
       <div className="w-full lg:w-1/2 aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl border-8 border-white bg-gradient-to-br from-indigo-600 via-indigo-700 to-slate-800 flex flex-col items-center justify-center gap-4 relative">
-        {/* Decorative rings */}
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
           <div className="w-64 h-64 rounded-full border border-white/10" />
           <div className="absolute w-48 h-48 rounded-full border border-white/10" />
         </div>
-
         <div className="w-16 h-16 rounded-2xl bg-white/10 border border-white/20 flex items-center justify-center">
           <Award className="w-8 h-8 text-white" />
         </div>
@@ -134,7 +170,6 @@ function CertificateCard({ cert }) {
         <p className="text-white/40 text-[10px] uppercase tracking-widest z-10">{cert.date}</p>
       </div>
 
-      {/* Text details */}
       <div className="w-full lg:w-1/2">
         <div className="flex items-center gap-3 mb-6">
           <div className="w-12 h-12 bg-indigo-600 rounded-2xl flex items-center justify-center text-white shadow-lg shadow-indigo-200">
@@ -157,6 +192,127 @@ function CertificateCard({ cert }) {
         </a>
       </div>
     </motion.div>
+  );
+}
+
+// ─── Interactive Skill Card ───────────────────────────────────────────────────
+function SkillCard({ category, data, idx }) {
+  const [open, setOpen] = useState(false);
+  const colors = COLOR_MAP[data.color];
+
+  const IconComp = category === 'Programming' ? Terminal :
+                   category === 'Data & AI' ? BrainCircuit : Database;
+
+  return (
+    <>
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ delay: idx * 0.1 }}
+        onClick={() => setOpen(true)}
+        className={`group p-8 bg-white rounded-3xl border ${colors.border} shadow-sm hover:shadow-lg ${colors.shadow} transition-all cursor-pointer select-none`}
+        whileHover={{ y: -4 }}
+        whileTap={{ scale: 0.98 }}
+      >
+        <div className={`w-10 h-10 ${colors.bg} ${colors.text} rounded-lg flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}>
+          <IconComp className="w-5 h-5" />
+        </div>
+        <h3 className="text-lg font-bold mb-2">{category}</h3>
+        <p className="text-slate-400 text-sm mb-5 leading-relaxed">{data.description}</p>
+
+        {/* Skill pills preview */}
+        <div className="flex flex-wrap gap-2 mb-6">
+          {data.items.slice(0, 3).map(skill => (
+            <span key={skill} className={`px-3 py-1 text-xs font-semibold rounded-full border ${colors.badge}`}>
+              {skill}
+            </span>
+          ))}
+          {data.items.length > 3 && (
+            <span className="px-3 py-1 text-xs font-semibold rounded-full bg-slate-100 text-slate-500 border border-slate-200">
+              +{data.items.length - 3} more
+            </span>
+          )}
+        </div>
+
+        <div className={`flex items-center gap-1 text-xs font-bold ${colors.text} uppercase tracking-wider`}>
+          <span>View all skills</span>
+          <ChevronDown className="w-3.5 h-3.5 group-hover:translate-y-0.5 transition-transform" />
+        </div>
+      </motion.div>
+
+      {/* Modal / Expanded overlay */}
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            className="fixed inset-0 z-50 flex items-center justify-center p-4"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          >
+            {/* Backdrop */}
+            <motion.div
+              className="absolute inset-0 bg-slate-900/50 backdrop-blur-sm"
+              onClick={() => setOpen(false)}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+            />
+
+            {/* Panel */}
+            <motion.div
+              className="relative bg-white rounded-3xl shadow-2xl w-full max-w-md p-8 z-10"
+              initial={{ opacity: 0, scale: 0.9, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.9, y: 20 }}
+              transition={{ type: "spring", stiffness: 300, damping: 25 }}
+            >
+              {/* Close button */}
+              <button
+                onClick={() => setOpen(false)}
+                className="absolute top-5 right-5 w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center transition-colors"
+              >
+                <X className="w-4 h-4 text-slate-500" />
+              </button>
+
+              {/* Header */}
+              <div className={`w-14 h-14 ${colors.iconBg} rounded-2xl flex items-center justify-center text-white shadow-lg mb-6`}>
+                <IconComp className="w-7 h-7" />
+              </div>
+              <p className={`text-xs font-bold ${colors.text} uppercase tracking-widest mb-1`}>Technical Skills</p>
+              <h3 className="text-2xl font-black text-slate-900 mb-2">{category}</h3>
+              <p className="text-slate-500 text-sm leading-relaxed mb-8">{data.description}</p>
+
+              {/* All skill pills */}
+              <div className="flex flex-wrap gap-3">
+                {data.items.map((skill, i) => (
+                  <motion.span
+                    key={skill}
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: i * 0.06 }}
+                    className={`px-4 py-2 text-sm font-semibold rounded-full border ${colors.badge} flex items-center gap-2`}
+                  >
+                    <span className={`w-1.5 h-1.5 rounded-full ${colors.dot}`} />
+                    {skill}
+                  </motion.span>
+                ))}
+              </div>
+
+              <div className={`mt-8 pt-6 border-t border-slate-100 flex items-center justify-between`}>
+                <span className="text-xs text-slate-400 font-medium">{data.items.length} skills in this category</span>
+                <button
+                  onClick={() => setOpen(false)}
+                  className={`px-4 py-2 ${colors.iconBg} text-white text-sm font-bold rounded-xl hover:opacity-90 transition-opacity`}
+                >
+                  Got it
+                </button>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
   );
 }
 
@@ -284,7 +440,6 @@ export default function App() {
               </div>
             </motion.div>
 
-            {/* ── FIXED: Profile picture with fallback ── */}
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
@@ -301,31 +456,13 @@ export default function App() {
       {/* Skills Section */}
       <section id="skills" className="py-20 px-6">
         <div className="max-w-5xl mx-auto">
-          <h2 className="text-3xl font-bold mb-12 text-center">Technical Arsenal</h2>
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold mb-3">Technical Arsenal</h2>
+            <p className="text-slate-400 text-sm">Click any card to explore the skills in detail.</p>
+          </div>
           <div className="grid md:grid-cols-3 gap-8">
-            {Object.entries(SKILLS).map(([category, items], idx) => (
-              <motion.div
-                key={category}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: idx * 0.1 }}
-                className="p-8 bg-white rounded-3xl border border-slate-200 shadow-sm hover:shadow-md transition-all"
-              >
-                <div className="w-10 h-10 bg-indigo-50 text-indigo-600 rounded-lg flex items-center justify-center mb-6">
-                  {category === 'Programming' ? <Terminal className="w-5 h-5" /> :
-                   category === 'Data & AI' ? <BrainCircuit className="w-5 h-5" /> :
-                   <Database className="w-5 h-5" />}
-                </div>
-                <h3 className="text-lg font-bold mb-4">{category}</h3>
-                <div className="flex flex-wrap gap-2">
-                  {items.map(skill => (
-                    <span key={skill} className="px-3 py-1 bg-slate-50 text-slate-600 text-xs font-medium rounded-full border border-slate-100">
-                      {skill}
-                    </span>
-                  ))}
-                </div>
-              </motion.div>
+            {Object.entries(SKILLS).map(([category, data], idx) => (
+              <SkillCard key={category} category={category} data={data} idx={idx} />
             ))}
           </div>
         </div>
@@ -373,7 +510,6 @@ export default function App() {
       </section>
 
       {/* Certificates Section */}
-      {/* ── FIXED: Certificate renders as styled card; verification link still works ── */}
       <section id="certificates" className="py-20 px-6 bg-white">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-16">
