@@ -69,19 +69,21 @@ const SKILLS = {
 // Replace PROFILE_IMAGE_URL with your own hosted image URL (e.g. from Google Drive,
 // Cloudinary, GitHub raw, etc.) to show your actual photo.
 // Example: const PROFILE_IMAGE_URL = "https://i.imgur.com/yourimage.jpg";
-const PROFILE_IMAGE_URL = ""; // ← paste your image URL here
+const PROFILE_IMAGE_URL =
+  "https://raw.githubusercontent.com/prakashrajaa/portfolio/300965d6a37cba2808aff2a58b65a8fc2c378b1d/src/WhatsApp%20Image%202026-03-06%20at%2010.08.58%20AM.jpeg";
+ // ← paste your image URL here
 
 function ProfilePicture({ className }) {
   const [imgError, setImgError] = useState(false);
 
   if (PROFILE_IMAGE_URL && !imgError) {
     return (
-<img
-  src="https://raw.githubusercontent.com/prakashrajaa/portfolio/300965d6a37cba2808aff2a58b65a8fc2c378b1d/src/WhatsApp%20Image%202026-03-06%20at%2010.08.58%20AM.jpeg"
-  alt="Prakashraja A"
-  className={className}
-  onError={() => setImgError(true)}
-/>
+      <img
+        src={PROFILE_IMAGE_URL}
+        alt="Prakashraja"
+        className={className}
+        onError={() => setImgError(true)}
+      />
     );
   }
 
