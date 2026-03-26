@@ -193,7 +193,7 @@ export default function App() {
               className="relative aspect-square rounded-3xl overflow-hidden bg-slate-100 shadow-xl"
             >
 <img 
-  src="https://drive.google.com/uc?export=view&id=1GQ8wnYbFFhuVh5kMy46BaxCa-FmzHlUj"
+  src="src/WhatsApp Image 2026-03-06 at 10.08.58 AM.jpeg"
   alt="Prakashraja A"
   className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
 />
