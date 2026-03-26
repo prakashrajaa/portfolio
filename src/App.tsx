@@ -76,12 +76,12 @@ function ProfilePicture({ className }) {
 
   if (PROFILE_IMAGE_URL && !imgError) {
     return (
-      <img
-        src="https://github.com/prakashrajaa/portfolio/blob/300965d6a37cba2808aff2a58b65a8fc2c378b1d/src/WhatsApp%20Image%202026-03-06%20at%2010.08.58%20AM.jpeg"
-        alt="Prakashraja A"
-        className={className}
-        onError={() => setImgError(true)}
-      />
+<img
+  src="https://raw.githubusercontent.com/prakashrajaa/portfolio/300965d6a37cba2808aff2a58b65a8fc2c378b1d/src/WhatsApp%20Image%202026-03-06%20at%2010.08.58%20AM.jpeg"
+  alt="Prakashraja A"
+  className={className}
+  onError={() => setImgError(true)}
+/>
     );
   }
 
