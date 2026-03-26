@@ -90,7 +90,7 @@ function ProfilePicture({ className }) {
   // Fallback: stylised initials avatar
   return (
     <div className="w-full h-full flex flex-col items-center justify-center bg-gradient-to-br from-indigo-100 to-slate-200 select-none">
-      <div className="w-24 h-24 rounded-full bg-indigo-600 flex items-center justify-center mb-4 shadow-xl">
+      <div className="w-20 h-20 rounded-full bg-indigo-600 flex items-center justify-center mb-4 shadow-xl">
         <span className="text-white text-3xl font-black tracking-tight">PA</span>
       </div>
       <span className="text-slate-500 text-sm font-semibold">Prakashraja A</span>
