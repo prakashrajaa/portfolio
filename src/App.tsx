@@ -81,7 +81,7 @@ function ProfilePicture({ className }) {
       <img
         src={PROFILE_IMAGE_URL}
         alt="Prakashraja"
-        className={`w-40 h-40 object-cover rounded-full ${className}`}
+        className={className}
         onError={() => setImgError(true)}
       />
     );
