@@ -65,19 +65,36 @@ const SKILLS = {
   "Programming": {
     icon: "Terminal",
     color: "indigo",
-    items: ["Python", "Basic C", "Basic Java", "JavaScript"],
+    items: [
+      { name: "Python", source: "Chettinad College of Engineering", sourceType: "college", link: "https://www.chettinadtech.ac.in/" },
+      { name: "Basic C", source: "Chettinad College of Engineering", sourceType: "college", link: "https://www.chettinadtech.ac.in/" },
+      { name: "Basic Java", source: "Chettinad College of Engineering", sourceType: "college", link: "https://www.chettinadtech.ac.in/" },
+      { name: "JavaScript", source: "IBM Certificate – Front End Technologies", sourceType: "certificate", link: "https://courses.ibmcep.cognitiveclass.ai/certificates/63d14ae0a2924959910e288156547a74" },
+    ],
     description: "Core programming languages I use to build software and automate solutions."
   },
   "Data & AI": {
     icon: "BrainCircuit",
     color: "violet",
-    items: ["Machine Learning", "Data Engineering", "Data Analysis", "EDA"],
+    items: [
+      { name: "Machine Learning", source: "Chettinad College of Engineering", sourceType: "college", link: "https://www.chettinadtech.ac.in/" },
+      { name: "Data Engineering", source: "Chettinad College of Engineering", sourceType: "college", link: "https://www.chettinadtech.ac.in/" },
+      { name: "Data Analysis", source: "Chettinad College of Engineering", sourceType: "college", link: "https://www.chettinadtech.ac.in/" },
+      { name: "EDA", source: "Chettinad College of Engineering", sourceType: "college", link: "https://www.chettinadtech.ac.in/" },
+    ],
     description: "Skills in building intelligent systems and extracting insights from data."
   },
   "Tools": {
     icon: "Database",
     color: "sky",
-    items: ["ReactJS", "Node.js", "Excel Dashboards", "Power BI", "Matplotlib", "Seaborn"],
+    items: [
+      { name: "ReactJS", source: "IBM Certificate – Front End Technologies", sourceType: "certificate", link: "https://courses.ibmcep.cognitiveclass.ai/certificates/63d14ae0a2924959910e288156547a74" },
+      { name: "Node.js", source: "IBM Certificate – Front End Technologies", sourceType: "certificate", link: "https://courses.ibmcep.cognitiveclass.ai/certificates/63d14ae0a2924959910e288156547a74" },
+      { name: "Excel Dashboards", source: "Chettinad College of Engineering", sourceType: "college", link: "https://www.chettinadtech.ac.in/" },
+      { name: "Power BI", source: "Chettinad College of Engineering", sourceType: "college", link: "https://www.chettinadtech.ac.in/" },
+      { name: "Matplotlib", source: "Chettinad College of Engineering", sourceType: "college", link: "https://www.chettinadtech.ac.in/" },
+      { name: "Seaborn", source: "Chettinad College of Engineering", sourceType: "college", link: "https://www.chettinadtech.ac.in/" },
+    ],
     description: "Frameworks and tools I use for development, visualization, and reporting."
   }
 };
@@ -203,6 +220,14 @@ function SkillCard({ category, data, idx }) {
   const IconComp = category === 'Programming' ? Terminal :
                    category === 'Data & AI' ? BrainCircuit : Database;
 
+  // Group skills by source for display
+  const grouped = data.items.reduce((acc, skill) => {
+    const key = skill.source;
+    if (!acc[key]) acc[key] = { sourceType: skill.sourceType, link: skill.link, skills: [] };
+    acc[key].skills.push(skill.name);
+    return acc;
+  }, {});
+
   return (
     <>
       <motion.div
@@ -224,8 +249,8 @@ function SkillCard({ category, data, idx }) {
         {/* Skill pills preview */}
         <div className="flex flex-wrap gap-2 mb-6">
           {data.items.slice(0, 3).map(skill => (
-            <span key={skill} className={`px-3 py-1 text-xs font-semibold rounded-full border ${colors.badge}`}>
-              {skill}
+            <span key={skill.name} className={`px-3 py-1 text-xs font-semibold rounded-full border ${colors.badge}`}>
+              {skill.name}
             </span>
           ))}
           {data.items.length > 3 && (
@@ -261,7 +286,7 @@ function SkillCard({ category, data, idx }) {
 
             {/* Panel */}
             <motion.div
-              className="relative bg-white rounded-3xl shadow-2xl w-full max-w-md p-8 z-10"
+              className="relative bg-white rounded-3xl shadow-2xl w-full max-w-lg p-8 z-10 max-h-[90vh] overflow-y-auto"
               initial={{ opacity: 0, scale: 0.9, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.9, y: 20 }}
@@ -283,24 +308,66 @@ function SkillCard({ category, data, idx }) {
               <h3 className="text-2xl font-black text-slate-900 mb-2">{category}</h3>
               <p className="text-slate-500 text-sm leading-relaxed mb-8">{data.description}</p>
 
-              {/* All skill pills */}
-              <div className="flex flex-wrap gap-3">
-                {data.items.map((skill, i) => (
-                  <motion.span
-                    key={skill}
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: i * 0.06 }}
-                    className={`px-4 py-2 text-sm font-semibold rounded-full border ${colors.badge} flex items-center gap-2`}
+              {/* Skills grouped by source */}
+              <div className="space-y-6">
+                {Object.entries(grouped).map(([source, { sourceType, link, skills }], gi) => (
+                  <motion.div
+                    key={source}
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: gi * 0.1 }}
+                    className="rounded-2xl border border-slate-100 overflow-hidden"
                   >
-                    <span className={`w-1.5 h-1.5 rounded-full ${colors.dot}`} />
-                    {skill}
-                  </motion.span>
+                    {/* Source header — clickable */}
+                    <a
+                      href={link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={e => e.stopPropagation()}
+                      className={`flex items-center justify-between gap-3 px-5 py-3 ${
+                        sourceType === 'certificate'
+                          ? 'bg-indigo-600 hover:bg-indigo-700'
+                          : 'bg-slate-800 hover:bg-slate-900'
+                      } transition-colors group/src`}
+                    >
+                      <div className="flex items-center gap-2">
+                        {sourceType === 'certificate' ? (
+                          <Award className="w-4 h-4 text-white/80 shrink-0" />
+                        ) : (
+                          <GraduationCap className="w-4 h-4 text-white/80 shrink-0" />
+                        )}
+                        <span className="text-white text-xs font-bold uppercase tracking-wide">{source}</span>
+                      </div>
+                      <ExternalLink className="w-3.5 h-3.5 text-white/60 group-hover/src:text-white transition-colors shrink-0" />
+                    </a>
+
+                    {/* Skill pills */}
+                    <div className="flex flex-wrap gap-2 p-4 bg-slate-50">
+                      {skills.map((skillName, si) => (
+                        <motion.a
+                          key={skillName}
+                          href={link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          onClick={e => e.stopPropagation()}
+                          initial={{ opacity: 0, scale: 0.85 }}
+                          animate={{ opacity: 1, scale: 1 }}
+                          transition={{ delay: gi * 0.1 + si * 0.05 }}
+                          className={`px-4 py-2 text-sm font-semibold rounded-full border ${colors.badge} flex items-center gap-2 hover:shadow-md transition-all hover:-translate-y-0.5 cursor-pointer`}
+                          title={`Learned at: ${source}`}
+                        >
+                          <span className={`w-1.5 h-1.5 rounded-full ${colors.dot}`} />
+                          {skillName}
+                          <ExternalLink className="w-3 h-3 opacity-50" />
+                        </motion.a>
+                      ))}
+                    </div>
+                  </motion.div>
                 ))}
               </div>
 
-              <div className={`mt-8 pt-6 border-t border-slate-100 flex items-center justify-between`}>
-                <span className="text-xs text-slate-400 font-medium">{data.items.length} skills in this category</span>
+              <div className="mt-8 pt-6 border-t border-slate-100 flex items-center justify-between">
+                <span className="text-xs text-slate-400 font-medium">{data.items.length} skills · tap any to visit source</span>
                 <button
                   onClick={() => setOpen(false)}
                   className={`px-4 py-2 ${colors.iconBg} text-white text-sm font-bold rounded-xl hover:opacity-90 transition-opacity`}
