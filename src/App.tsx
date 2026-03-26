@@ -77,7 +77,7 @@ function ProfilePicture({ className }) {
   if (PROFILE_IMAGE_URL && !imgError) {
     return (
       <img
-        src={PROFILE_IMAGE_URL}
+        src="WhatsApp Image 2026-03-06 at 10.08.58 AM.jpeg"
         alt="Prakashraja A"
         className={className}
         onError={() => setImgError(true)}
