@@ -53,7 +53,6 @@ const PROJECTS = [
     icon: <Code2 className="w-5 h-5" />
   }
 ];
-
 const CERTIFICATES = [
   {
     title: "Front End Technologies",
@@ -76,9 +75,9 @@ const CERTIFICATES = [
     type: "course",
     badge: "IBM Business Partner",
     color: "sky",
-    description: "Successfully completed the Full Stack Development course. Applauded for commitment and exceptional performance throughout the course. Conducted in collaboration with IBM Business Partner.",
+    description: "Successfully completed the Full Stack Development course.",
     skills: ["Full Stack Development", "Web Development", "Frontend", "Backend"],
-    link: null,
+    link: "https://raw.githubusercontent.com/prakashrajaa/portfolio/7d495f264239da68771e9241be64631ca689bf44/src/Full%20Stack%20Development%20Internship.jpeg",
     verifiable: false
   },
   {
@@ -89,9 +88,9 @@ const CERTIFICATES = [
     type: "internship",
     badge: "Experience Letter",
     color: "emerald",
-    description: "Successfully completed a 1-month internship programme in Full Stack Development at Adroit Technologies Innovative Solutions Pvt. Ltd., Coimbatore. Recognized as punctual and hardworking throughout the programme.",
+    description: "Successfully completed a 1-month internship programme.",
     skills: ["Full Stack Development", "Professional Experience", "Team Collaboration"],
-    link: null,
+    link: "https://raw.githubusercontent.com/prakashrajaa/portfolio/7d495f264239da68771e9241be64631ca689bf44/src/IT%20tech.jpeg",
     verifiable: false
   },
   {
@@ -102,9 +101,9 @@ const CERTIFICATES = [
     type: "value-added",
     badge: "Value Added Course",
     color: "violet",
-    description: "Successfully completed a Value Added Course on Data Visualization using Python & R Programming during B.Tech AI & DS Degree Programme (2023–2024) at Chettinad College of Engineering & Technology, Karur.",
+    description: "Completed a course on Data Visualization using Python & R.",
     skills: ["Python", "R Programming", "Data Visualization", "Matplotlib", "Seaborn"],
-    link: "https://github.com/prakashrajaa/portfolio/blob/00b57f6645f4207d4c794847042f00052a0b804b/src/Data%20Visualization%20using%20Python%20%26%20R%20Programming.jpeg",
+    link: "https://raw.githubusercontent.com/prakashrajaa/portfolio/00b57f6645f4207d4c794847042f00052a0b804b/src/Data%20Visualization%20using%20Python%20%26%20R%20Programming.jpeg",
     verifiable: false
   },
   {
@@ -115,9 +114,9 @@ const CERTIFICATES = [
     type: "participation",
     badge: "Certificate of Participation",
     color: "amber",
-    description: "Participated in AIROX'24, a National Level Technical Symposium organized by the Department of Artificial Intelligence and Data Science at J.J. College of Engineering and Technology, Trichy-9.",
+    description: "Participated in AIROX'24 National Level Symposium.",
     skills: ["Technical Symposium", "AI & Data Science", "Networking"],
-    link: null,
+    link: "https://raw.githubusercontent.com/prakashrajaa/portfolio/7d495f264239da68771e9241be64631ca689bf44/src/AIROX'2K24%20%E2%80%93%20National%20Level%20Technical%20Symposium.jpeg",
     verifiable: false
   }
 ];
