@@ -22,7 +22,11 @@ import {
   CheckCircle2,
   User,
   X,
-  ChevronDown
+  ChevronDown,
+  FileText,
+  Star,
+  Calendar,
+  Building2
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 
@@ -56,10 +60,141 @@ const CERTIFICATES = [
     issuer: "IBM Career Education Program",
     courseCode: "CEFET1IN",
     date: "October 14, 2024",
-    description: "Successfully completed and received a passing grade in Front End Technologies (CEFET1IN) provided by IBMCE.",
-    link: "https://courses.ibmcep.cognitiveclass.ai/certificates/63d14ae0a2924959910e288156547a74"
+    type: "online",
+    badge: "IBM Certified",
+    color: "indigo",
+    description: "Successfully completed and received a passing grade in Front End Technologies (CEFET1IN) provided by IBMCE. Covers JavaScript, ReactJS, Node.js and modern web development practices.",
+    skills: ["JavaScript", "ReactJS", "Node.js", "HTML/CSS"],
+    link: "https://courses.ibmcep.cognitiveclass.ai/certificates/63d14ae0a2924959910e288156547a74",
+    verifiable: true
+  },
+  {
+    title: "Full Stack Development",
+    issuer: "Adroit Technologies Innovative Solutions Pvt. Ltd.",
+    courseCode: null,
+    date: "August 12 – September 12, 2024",
+    type: "course",
+    badge: "IBM Business Partner",
+    color: "sky",
+    description: "Successfully completed the Full Stack Development course. Applauded for commitment and exceptional performance throughout the course. Conducted in collaboration with IBM Business Partner.",
+    skills: ["Full Stack Development", "Web Development", "Frontend", "Backend"],
+    link: null,
+    verifiable: false
+  },
+  {
+    title: "Full Stack Development Internship",
+    issuer: "Adroit Technologies Innovative Solutions Pvt. Ltd., Coimbatore",
+    courseCode: null,
+    date: "August 12 – September 12, 2024",
+    type: "internship",
+    badge: "Experience Letter",
+    color: "emerald",
+    description: "Successfully completed a 1-month internship programme in Full Stack Development at Adroit Technologies Innovative Solutions Pvt. Ltd., Coimbatore. Recognized as punctual and hardworking throughout the programme.",
+    skills: ["Full Stack Development", "Professional Experience", "Team Collaboration"],
+    link: null,
+    verifiable: false
+  },
+  {
+    title: "Data Visualization using Python & R Programming",
+    issuer: "Chettinad College of Engineering & Technology",
+    courseCode: null,
+    date: "October 6 – October 7, 2023",
+    type: "value-added",
+    badge: "Value Added Course",
+    color: "violet",
+    description: "Successfully completed a Value Added Course on Data Visualization using Python & R Programming during B.Tech AI & DS Degree Programme (2023–2024) at Chettinad College of Engineering & Technology, Karur.",
+    skills: ["Python", "R Programming", "Data Visualization", "Matplotlib", "Seaborn"],
+    link: "https://www.chettinadtech.ac.in/",
+    verifiable: false
+  },
+  {
+    title: "AIROX'2K24 – National Level Technical Symposium",
+    issuer: "J.J. College of Engineering and Technology, Trichy",
+    courseCode: null,
+    date: "November 11, 2024",
+    type: "participation",
+    badge: "Certificate of Participation",
+    color: "amber",
+    description: "Participated in AIROX'24, a National Level Technical Symposium organized by the Department of Artificial Intelligence and Data Science at J.J. College of Engineering and Technology, Trichy-9.",
+    skills: ["Technical Symposium", "AI & Data Science", "Networking"],
+    link: null,
+    verifiable: false
   }
 ];
+
+const CERT_COLORS = {
+  indigo: {
+    bg: "from-indigo-600 via-indigo-700 to-slate-800",
+    accent: "text-indigo-300",
+    badge: "bg-indigo-100 text-indigo-700 border-indigo-200",
+    border: "border-indigo-200",
+    icon: "bg-indigo-600",
+    pill: "bg-indigo-50 text-indigo-700",
+    ring: "ring-indigo-200",
+    tab: "bg-indigo-600 text-white",
+    tabHover: "hover:bg-indigo-700"
+  },
+  sky: {
+    bg: "from-sky-600 via-sky-700 to-slate-800",
+    accent: "text-sky-300",
+    badge: "bg-sky-100 text-sky-700 border-sky-200",
+    border: "border-sky-200",
+    icon: "bg-sky-600",
+    pill: "bg-sky-50 text-sky-700",
+    ring: "ring-sky-200",
+    tab: "bg-sky-600 text-white",
+    tabHover: "hover:bg-sky-700"
+  },
+  emerald: {
+    bg: "from-emerald-600 via-emerald-700 to-slate-800",
+    accent: "text-emerald-300",
+    badge: "bg-emerald-100 text-emerald-700 border-emerald-200",
+    border: "border-emerald-200",
+    icon: "bg-emerald-600",
+    pill: "bg-emerald-50 text-emerald-700",
+    ring: "ring-emerald-200",
+    tab: "bg-emerald-600 text-white",
+    tabHover: "hover:bg-emerald-700"
+  },
+  violet: {
+    bg: "from-violet-600 via-violet-700 to-slate-800",
+    accent: "text-violet-300",
+    badge: "bg-violet-100 text-violet-700 border-violet-200",
+    border: "border-violet-200",
+    icon: "bg-violet-600",
+    pill: "bg-violet-50 text-violet-700",
+    ring: "ring-violet-200",
+    tab: "bg-violet-600 text-white",
+    tabHover: "hover:bg-violet-700"
+  },
+  amber: {
+    bg: "from-amber-500 via-amber-600 to-slate-800",
+    accent: "text-amber-300",
+    badge: "bg-amber-100 text-amber-700 border-amber-200",
+    border: "border-amber-200",
+    icon: "bg-amber-500",
+    pill: "bg-amber-50 text-amber-700",
+    ring: "ring-amber-200",
+    tab: "bg-amber-500 text-white",
+    tabHover: "hover:bg-amber-600"
+  }
+};
+
+const TYPE_ICONS = {
+  online: <Award className="w-5 h-5" />,
+  course: <GraduationCap className="w-5 h-5" />,
+  internship: <Briefcase className="w-5 h-5" />,
+  "value-added": <Star className="w-5 h-5" />,
+  participation: <FileText className="w-5 h-5" />
+};
+
+const TYPE_LABELS = {
+  online: "Online Certification",
+  course: "Course Completion",
+  internship: "Internship",
+  "value-added": "Value Added Course",
+  participation: "Participation"
+};
 
 const SKILLS = {
   "Programming": {
@@ -137,7 +272,6 @@ const PROFILE_IMAGE_URL =
 
 function ProfilePicture({ className }) {
   const [imgError, setImgError] = useState(false);
-
   if (PROFILE_IMAGE_URL && !imgError) {
     return (
       <img
@@ -148,7 +282,6 @@ function ProfilePicture({ className }) {
       />
     );
   }
-
   return (
     <div className="w-40 h-40 flex flex-col items-center justify-center bg-gradient-to-br from-indigo-100 to-slate-200 rounded-full shadow-lg">
       <div className="w-16 h-16 rounded-full bg-indigo-600 flex items-center justify-center mb-2">
@@ -159,54 +292,106 @@ function ProfilePicture({ className }) {
   );
 }
 
-function CertificateCard({ cert }) {
+// ─── Certificate Card (Enhanced) ─────────────────────────────────────────────
+function CertificateCard({ cert, idx }) {
+  const colors = CERT_COLORS[cert.color];
+  const typeIcon = TYPE_ICONS[cert.type];
+  const typeLabel = TYPE_LABELS[cert.type];
+
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 0, y: 24 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      className="flex flex-col lg:flex-row gap-10 items-center bg-slate-50 p-8 rounded-[2.5rem] border border-slate-100"
+      transition={{ delay: idx * 0.08 }}
+      className={`flex flex-col lg:flex-row gap-8 items-stretch bg-white rounded-[2rem] border ${colors.border} shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden`}
     >
-      <div className="w-full lg:w-1/2 aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl border-8 border-white bg-gradient-to-br from-indigo-600 via-indigo-700 to-slate-800 flex flex-col items-center justify-center gap-4 relative">
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-          <div className="w-64 h-64 rounded-full border border-white/10" />
-          <div className="absolute w-48 h-48 rounded-full border border-white/10" />
+      {/* Left – Visual Panel */}
+      <div className={`w-full lg:w-64 shrink-0 bg-gradient-to-br ${colors.bg} flex flex-col items-center justify-center gap-4 p-8 relative min-h-[220px]`}>
+        {/* Decorative rings */}
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-10">
+          <div className="w-48 h-48 rounded-full border-2 border-white" />
+          <div className="absolute w-32 h-32 rounded-full border border-white" />
         </div>
-        <div className="w-16 h-16 rounded-2xl bg-white/10 border border-white/20 flex items-center justify-center">
+
+        {/* Type badge */}
+        <div className="z-10 flex items-center gap-1.5 bg-white/20 border border-white/30 rounded-full px-3 py-1">
+          <span className="text-white/80 w-3.5 h-3.5">{typeIcon}</span>
+          <span className="text-white/90 text-[10px] font-bold uppercase tracking-wider">{typeLabel}</span>
+        </div>
+
+        {/* Big icon */}
+        <div className="z-10 w-16 h-16 rounded-2xl bg-white/15 border border-white/25 flex items-center justify-center">
           <Award className="w-8 h-8 text-white" />
         </div>
-        <div className="text-center px-8 z-10">
-          <p className="text-white/60 text-xs uppercase tracking-[0.2em] font-bold mb-1">Certificate of Completion</p>
-          <p className="text-white text-xl font-black leading-tight">{cert.title}</p>
-          <p className="text-indigo-300 text-sm font-semibold mt-1">{cert.issuer}</p>
+
+        {/* Title snippet */}
+        <div className="z-10 text-center px-2">
+          <p className={`${colors.accent} text-[11px] font-bold uppercase tracking-widest mb-1`}>{cert.badge}</p>
+          <p className="text-white text-sm font-black leading-tight line-clamp-2">{cert.title}</p>
         </div>
-        <div className="flex items-center gap-2 bg-white/10 border border-white/20 rounded-full px-4 py-1.5 z-10">
-          <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
-          <span className="text-white/80 text-[11px] font-bold uppercase tracking-wider">Verified</span>
-        </div>
-        <p className="text-white/40 text-[10px] uppercase tracking-widest z-10">{cert.date}</p>
+
+        {cert.verifiable && (
+          <div className="z-10 flex items-center gap-1.5 bg-white/10 border border-white/20 rounded-full px-3 py-1">
+            <CheckCircle2 className="w-3 h-3 text-emerald-400" />
+            <span className="text-white/80 text-[10px] font-bold uppercase tracking-wider">Verifiable</span>
+          </div>
+        )}
       </div>
 
-      <div className="w-full lg:w-1/2">
-        <div className="flex items-center gap-3 mb-6">
-          <div className="w-12 h-12 bg-indigo-600 rounded-2xl flex items-center justify-center text-white shadow-lg shadow-indigo-200">
-            <Award className="w-6 h-6" />
+      {/* Right – Details Panel */}
+      <div className="flex flex-col justify-between p-7 flex-1 gap-4">
+        <div>
+          {/* Header */}
+          <div className="flex items-start gap-3 mb-4">
+            <div className={`w-10 h-10 ${colors.icon} rounded-xl flex items-center justify-center text-white shadow-md shrink-0`}>
+              {typeIcon}
+            </div>
+            <div>
+              <p className={`text-[11px] font-bold uppercase tracking-widest ${colors.pill.split(' ')[1]} mb-0.5`}>{cert.issuer}</p>
+              <div className="flex items-center gap-1.5 text-slate-400 text-xs font-medium">
+                <Calendar className="w-3 h-3" />
+                <span>{cert.date}</span>
+              </div>
+            </div>
           </div>
-          <div>
-            <p className="text-xs font-bold text-indigo-600 uppercase tracking-widest">{cert.issuer}</p>
-            <p className="text-xs text-slate-400 font-medium">{cert.date}</p>
+
+          {/* Title */}
+          <h3 className="text-xl font-black text-slate-900 mb-3 leading-tight">{cert.title}</h3>
+
+          {/* Description */}
+          <p className="text-slate-500 text-sm leading-relaxed mb-4">{cert.description}</p>
+
+          {/* Skills */}
+          <div className="flex flex-wrap gap-2">
+            {cert.skills.map(skill => (
+              <span key={skill} className={`px-3 py-1 text-[11px] font-bold rounded-full border ${colors.badge}`}>
+                {skill}
+              </span>
+            ))}
           </div>
         </div>
-        <h3 className="text-2xl font-bold mb-4 text-slate-900">{cert.title}</h3>
-        <p className="text-slate-600 leading-relaxed mb-8">{cert.description}</p>
-        <a
-          href={cert.link}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 px-6 py-3 bg-slate-900 text-white rounded-xl font-bold text-sm hover:bg-indigo-600 transition-all shadow-lg shadow-slate-200"
-        >
-          Verify Certificate <ExternalLink className="w-4 h-4" />
-        </a>
+
+        {/* CTA */}
+        <div className="flex items-center gap-3 pt-2">
+          {cert.link ? (
+            <a
+              href={cert.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`inline-flex items-center gap-2 px-5 py-2.5 ${colors.icon} text-white rounded-xl font-bold text-sm hover:opacity-90 transition-all shadow-md`}
+            >
+              {cert.verifiable ? "Verify Certificate" : "View Issuer"} <ExternalLink className="w-3.5 h-3.5" />
+            </a>
+          ) : (
+            <span className="inline-flex items-center gap-2 px-5 py-2.5 bg-slate-100 text-slate-500 rounded-xl font-bold text-sm cursor-default">
+              <FileText className="w-3.5 h-3.5" /> Physical Certificate
+            </span>
+          )}
+          {cert.courseCode && (
+            <span className="text-xs text-slate-400 font-mono font-bold">Code: {cert.courseCode}</span>
+          )}
+        </div>
       </div>
     </motion.div>
   );
@@ -220,7 +405,6 @@ function SkillCard({ category, data, idx }) {
   const IconComp = category === 'Programming' ? Terminal :
                    category === 'Data & AI' ? BrainCircuit : Database;
 
-  // Group skills by source for display
   const grouped = data.items.reduce((acc, skill) => {
     const key = skill.source;
     if (!acc[key]) acc[key] = { sourceType: skill.sourceType, link: skill.link, skills: [] };
@@ -245,8 +429,6 @@ function SkillCard({ category, data, idx }) {
         </div>
         <h3 className="text-lg font-bold mb-2">{category}</h3>
         <p className="text-slate-400 text-sm mb-5 leading-relaxed">{data.description}</p>
-
-        {/* Skill pills preview */}
         <div className="flex flex-wrap gap-2 mb-6">
           {data.items.slice(0, 3).map(skill => (
             <span key={skill.name} className={`px-3 py-1 text-xs font-semibold rounded-full border ${colors.badge}`}>
@@ -259,14 +441,12 @@ function SkillCard({ category, data, idx }) {
             </span>
           )}
         </div>
-
         <div className={`flex items-center gap-1 text-xs font-bold ${colors.text} uppercase tracking-wider`}>
           <span>View all skills</span>
           <ChevronDown className="w-3.5 h-3.5 group-hover:translate-y-0.5 transition-transform" />
         </div>
       </motion.div>
 
-      {/* Modal / Expanded overlay */}
       <AnimatePresence>
         {open && (
           <motion.div
@@ -275,7 +455,6 @@ function SkillCard({ category, data, idx }) {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
           >
-            {/* Backdrop */}
             <motion.div
               className="absolute inset-0 bg-slate-900/50 backdrop-blur-sm"
               onClick={() => setOpen(false)}
@@ -283,8 +462,6 @@ function SkillCard({ category, data, idx }) {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
             />
-
-            {/* Panel */}
             <motion.div
               className="relative bg-white rounded-3xl shadow-2xl w-full max-w-lg p-8 z-10 max-h-[90vh] overflow-y-auto"
               initial={{ opacity: 0, scale: 0.9, y: 20 }}
@@ -292,23 +469,18 @@ function SkillCard({ category, data, idx }) {
               exit={{ opacity: 0, scale: 0.9, y: 20 }}
               transition={{ type: "spring", stiffness: 300, damping: 25 }}
             >
-              {/* Close button */}
               <button
                 onClick={() => setOpen(false)}
                 className="absolute top-5 right-5 w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center transition-colors"
               >
                 <X className="w-4 h-4 text-slate-500" />
               </button>
-
-              {/* Header */}
               <div className={`w-14 h-14 ${colors.iconBg} rounded-2xl flex items-center justify-center text-white shadow-lg mb-6`}>
                 <IconComp className="w-7 h-7" />
               </div>
               <p className={`text-xs font-bold ${colors.text} uppercase tracking-widest mb-1`}>Technical Skills</p>
               <h3 className="text-2xl font-black text-slate-900 mb-2">{category}</h3>
               <p className="text-slate-500 text-sm leading-relaxed mb-8">{data.description}</p>
-
-              {/* Skills grouped by source */}
               <div className="space-y-6">
                 {Object.entries(grouped).map(([source, { sourceType, link, skills }], gi) => (
                   <motion.div
@@ -318,16 +490,13 @@ function SkillCard({ category, data, idx }) {
                     transition={{ delay: gi * 0.1 }}
                     className="rounded-2xl border border-slate-100 overflow-hidden"
                   >
-                    {/* Source header — clickable */}
                     <a
                       href={link}
                       target="_blank"
                       rel="noopener noreferrer"
                       onClick={e => e.stopPropagation()}
                       className={`flex items-center justify-between gap-3 px-5 py-3 ${
-                        sourceType === 'certificate'
-                          ? 'bg-indigo-600 hover:bg-indigo-700'
-                          : 'bg-slate-800 hover:bg-slate-900'
+                        sourceType === 'certificate' ? 'bg-indigo-600 hover:bg-indigo-700' : 'bg-slate-800 hover:bg-slate-900'
                       } transition-colors group/src`}
                     >
                       <div className="flex items-center gap-2">
@@ -340,8 +509,6 @@ function SkillCard({ category, data, idx }) {
                       </div>
                       <ExternalLink className="w-3.5 h-3.5 text-white/60 group-hover/src:text-white transition-colors shrink-0" />
                     </a>
-
-                    {/* Skill pills */}
                     <div className="flex flex-wrap gap-2 p-4 bg-slate-50">
                       {skills.map((skillName, si) => (
                         <motion.a
@@ -365,7 +532,6 @@ function SkillCard({ category, data, idx }) {
                   </motion.div>
                 ))}
               </div>
-
               <div className="mt-8 pt-6 border-t border-slate-100 flex items-center justify-between">
                 <span className="text-xs text-slate-400 font-medium">{data.items.length} skills · tap any to visit source</span>
                 <button
@@ -383,9 +549,20 @@ function SkillCard({ category, data, idx }) {
   );
 }
 
+// ─── Certificate Filter Tabs ──────────────────────────────────────────────────
+const CERT_FILTERS = [
+  { key: "all", label: "All" },
+  { key: "online", label: "Online" },
+  { key: "course", label: "Courses" },
+  { key: "internship", label: "Internship" },
+  { key: "value-added", label: "College" },
+  { key: "participation", label: "Events" }
+];
+
 // ─── Main App ─────────────────────────────────────────────────────────────────
 export default function App() {
   const [activeSection, setActiveSection] = useState('home');
+  const [certFilter, setCertFilter] = useState('all');
 
   useEffect(() => {
     const handleScroll = () => {
@@ -400,10 +577,13 @@ export default function App() {
       });
       if (current) setActiveSection(current);
     };
-
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const filteredCerts = certFilter === 'all'
+    ? CERTIFICATES
+    : CERTIFICATES.filter(c => c.type === certFilter);
 
   return (
     <div className="min-h-screen bg-[#f8f9fa] text-slate-900 font-sans selection:bg-indigo-100 selection:text-indigo-700">
@@ -501,8 +681,8 @@ export default function App() {
                   <Briefcase className="w-6 h-6" />
                 </div>
                 <div>
-                  <p className="text-sm font-bold text-slate-900">IBM Internship</p>
-                  <p className="text-xs text-slate-500">Full Stack Development</p>
+                  <p className="text-sm font-bold text-slate-900">Adroit Technologies / IBM Internship</p>
+                  <p className="text-xs text-slate-500">Full Stack Development · Aug–Sep 2024</p>
                 </div>
               </div>
             </motion.div>
@@ -579,15 +759,74 @@ export default function App() {
       {/* Certificates Section */}
       <section id="certificates" className="py-20 px-6 bg-white">
         <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold mb-4">Certifications</h2>
-            <p className="text-slate-500">Professional recognitions and verified achievements.</p>
+          {/* Header */}
+          <div className="text-center mb-10">
+            <h2 className="text-3xl font-bold mb-3">Certifications & Achievements</h2>
+            <p className="text-slate-500 max-w-xl mx-auto">Professional recognitions, course completions, internship experience, and event participation — all verified achievements.</p>
           </div>
-          <div className="grid md:grid-cols-1 gap-12">
-            {CERTIFICATES.map((cert) => (
-              <CertificateCard key={cert.title} cert={cert} />
+
+          {/* Stats row */}
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10"
+          >
+            {[
+              { label: "Total Certificates", value: CERTIFICATES.length, color: "text-indigo-600" },
+              { label: "Online / IBM", value: CERTIFICATES.filter(c => c.type === 'online').length, color: "text-indigo-600" },
+              { label: "Internships", value: CERTIFICATES.filter(c => c.type === 'internship').length, color: "text-emerald-600" },
+              { label: "Events", value: CERTIFICATES.filter(c => c.type === 'participation').length, color: "text-amber-600" },
+            ].map(stat => (
+              <div key={stat.label} className="bg-slate-50 rounded-2xl p-5 text-center border border-slate-100">
+                <p className={`text-3xl font-black ${stat.color}`}>{stat.value}</p>
+                <p className="text-xs text-slate-400 font-bold uppercase tracking-wider mt-1">{stat.label}</p>
+              </div>
+            ))}
+          </motion.div>
+
+          {/* Filter Tabs */}
+          <div className="flex flex-wrap gap-2 mb-10 justify-center">
+            {CERT_FILTERS.map(f => (
+              <button
+                key={f.key}
+                onClick={() => setCertFilter(f.key)}
+                className={`px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition-all border ${
+                  certFilter === f.key
+                    ? 'bg-slate-900 text-white border-slate-900 shadow-md'
+                    : 'bg-white text-slate-500 border-slate-200 hover:border-slate-400 hover:text-slate-700'
+                }`}
+              >
+                {f.label}
+                <span className="ml-1.5 opacity-60">
+                  ({f.key === 'all' ? CERTIFICATES.length : CERTIFICATES.filter(c => c.type === f.key).length})
+                </span>
+              </button>
             ))}
           </div>
+
+          {/* Certificate Cards */}
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={certFilter}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.2 }}
+              className="grid gap-6"
+            >
+              {filteredCerts.map((cert, idx) => (
+                <CertificateCard key={cert.title} cert={cert} idx={idx} />
+              ))}
+            </motion.div>
+          </AnimatePresence>
+
+          {filteredCerts.length === 0 && (
+            <div className="text-center py-16 text-slate-400">
+              <Award className="w-10 h-10 mx-auto mb-3 opacity-30" />
+              <p className="font-medium">No certificates in this category.</p>
+            </div>
+          )}
         </div>
       </section>
 
@@ -608,8 +847,8 @@ export default function App() {
                 </div>
                 <div>
                   <h3 className="text-lg font-bold">B.Tech in Artificial Intelligence and Data Science</h3>
-                  <p className="text-slate-500 text-sm">Chettinad College of Engineering and Technology</p>
-                  <p className="text-indigo-600 text-sm font-bold mt-1">Percentage: 60%</p>
+                  <p className="text-slate-500 text-sm">Chettinad College of Engineering and Technology, Karur</p>
+                  <p className="text-indigo-600 text-sm font-bold mt-1">CGPA: 6.69 (up to Semester III)</p>
                 </div>
               </div>
               <div className="text-right">
@@ -624,11 +863,12 @@ export default function App() {
                 viewport={{ once: true }}
                 className="p-6 bg-white rounded-3xl border border-slate-200"
               >
-                <h4 className="font-bold mb-1">H.S.C</h4>
-                <p className="text-xs text-slate-500 mb-2">Government Higher Secondary School, Karur</p>
+                <h4 className="font-bold mb-1">H.S.C (Class XII)</h4>
+                <p className="text-xs text-slate-500 mb-1">Govt HR Sec School, Esanatham, Karur</p>
+                <p className="text-xs text-slate-400 mb-3">Tamil Medium · General Education</p>
                 <div className="flex items-center justify-between">
-                  <span className="text-indigo-600 text-sm font-bold">61%</span>
-                  <span className="text-[10px] text-slate-400 uppercase font-bold">2020 - 2022</span>
+                  <span className="text-indigo-600 text-sm font-bold">362 / 600 (60.3%)</span>
+                  <span className="text-[10px] text-slate-400 uppercase font-bold">May 2022</span>
                 </div>
               </motion.div>
               <motion.div
@@ -637,11 +877,12 @@ export default function App() {
                 viewport={{ once: true }}
                 className="p-6 bg-white rounded-3xl border border-slate-200"
               >
-                <h4 className="font-bold mb-1">S.S.L.C</h4>
-                <p className="text-xs text-slate-500 mb-2">Government Higher Secondary School, Karur</p>
+                <h4 className="font-bold mb-1">S.S.L.C (Class X)</h4>
+                <p className="text-xs text-slate-500 mb-1">Govt HR Sec School, Esanatham, Karur</p>
+                <p className="text-xs text-slate-400 mb-3">Tamil Medium · Roll No. 4477214</p>
                 <div className="flex items-center justify-between">
-                  <span className="text-indigo-600 text-sm font-bold">76%</span>
-                  <span className="text-[10px] text-slate-400 uppercase font-bold">2020</span>
+                  <span className="text-indigo-600 text-sm font-bold">376 / 500 (75.2%)</span>
+                  <span className="text-[10px] text-slate-400 uppercase font-bold">March 2020</span>
                 </div>
               </motion.div>
             </div>
