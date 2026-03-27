@@ -119,6 +119,84 @@ const CERTIFICATES = [
     link: "https://raw.githubusercontent.com/prakashrajaa/portfolio/7d495f264239da68771e9241be64631ca689bf44/src/AIROX'2K24%20%E2%80%93%20National%20Level%20Technical%20Symposium.jpeg",
     verifiable: false
   }
+  {
+  title: "SSLC (10th) Marksheet",
+  issuer: "State Board of School Examinations, Tamil Nadu",
+  courseCode: null,
+  date: "March 2020",
+  type: "value-added",
+  badge: "Academic Record",
+  color: "amber",
+  description: "Completed Secondary School Leaving Certificate (SSLC) with 376/500 marks (75.2%).",
+  skills: ["Tamil", "English", "Mathematics", "Science", "Social Science"],
+  link: "ADD_YOUR_10TH_MARKSHEET_IMAGE_LINK",
+  verifiable: false
+},
+{
+  title: "HSC (11th) Marksheet",
+  issuer: "State Board of School Examinations, Tamil Nadu",
+  courseCode: null,
+  date: "March 2021",
+  type: "value-added",
+  badge: "Academic Record",
+  color: "sky",
+  description: "Completed Higher Secondary First Year (11th Standard) successfully.",
+  skills: ["Physics", "Chemistry", "Biology", "Mathematics"],
+  link: "ADD_YOUR_11TH_MARKSHEET_IMAGE_LINK",
+  verifiable: false
+},
+{
+  title: "HSC (12th) Marksheet",
+  issuer: "State Board of School Examinations, Tamil Nadu",
+  courseCode: null,
+  date: "May 2022",
+  type: "value-added",
+  badge: "Academic Record",
+  color: "indigo",
+  description: "Completed Higher Secondary Second Year (12th) with 362/600 marks (60.3%).",
+  skills: ["Physics", "Chemistry", "Biology", "Mathematics"],
+  link: "ADD_YOUR_12TH_MARKSHEET_IMAGE_LINK",
+  verifiable: false
+},
+{
+  title: "B.Tech Semester I Marksheet",
+  issuer: "Anna University, Chennai",
+  courseCode: null,
+  date: "2022",
+  type: "value-added",
+  badge: "University Record",
+  color: "violet",
+  description: "Semester I academic marksheet under Anna University.",
+  skills: ["Mathematics", "Engineering Basics"],
+  link: "ADD_SEM1_MARKSHEET_LINK",
+  verifiable: false
+},
+{
+  title: "B.Tech Semester II Marksheet",
+  issuer: "Anna University, Chennai",
+  courseCode: null,
+  date: "2023",
+  type: "value-added",
+  badge: "University Record",
+  color: "emerald",
+  description: "Semester II academic marksheet under Anna University.",
+  skills: ["Programming", "Data Structures"],
+  link: "ADD_SEM2_MARKSHEET_LINK",
+  verifiable: false
+},
+{
+  title: "B.Tech Semester III Marksheet",
+  issuer: "Anna University, Chennai",
+  courseCode: null,
+  date: "Nov 2023",
+  type: "value-added",
+  badge: "University Record",
+  color: "indigo",
+  description: "Semester III marksheet with GPA 6.826 (CGPA: 6.69).",
+  skills: ["AI", "Database", "Algorithms", "Data Visualization"],
+  link: "ADD_SEM3_MARKSHEET_LINK",
+  verifiable: false
+}
 ];
 
 const CERT_COLORS = {
