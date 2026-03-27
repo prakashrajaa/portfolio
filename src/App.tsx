@@ -835,45 +835,7 @@ export default function App() {
             <p className="text-slate-500 max-w-xl mx-auto">Professional recognitions, course completions, internship experience, and event participation — all verified achievements.</p>
           </div>
 
-          {/* Stats row */}
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10"
-          >
-            {[
-              { label: "Total Certificates", value: CERTIFICATES.length, color: "text-indigo-600" },
-              { label: "Online / IBM", value: CERTIFICATES.filter(c => c.type === 'online').length, color: "text-indigo-600" },
-              { label: "Internships", value: CERTIFICATES.filter(c => c.type === 'internship').length, color: "text-emerald-600" },
-              { label: "Events", value: CERTIFICATES.filter(c => c.type === 'participation').length, color: "text-amber-600" },
-            ].map(stat => (
-              <div key={stat.label} className="bg-slate-50 rounded-2xl p-5 text-center border border-slate-100">
-                <p className={`text-3xl font-black ${stat.color}`}>{stat.value}</p>
-                <p className="text-xs text-slate-400 font-bold uppercase tracking-wider mt-1">{stat.label}</p>
-              </div>
-            ))}
-          </motion.div>
 
-          {/* Filter Tabs */}
-          <div className="flex flex-wrap gap-2 mb-10 justify-center">
-            {CERT_FILTERS.map(f => (
-              <button
-                key={f.key}
-                onClick={() => setCertFilter(f.key)}
-                className={`px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition-all border ${
-                  certFilter === f.key
-                    ? 'bg-slate-900 text-white border-slate-900 shadow-md'
-                    : 'bg-white text-slate-500 border-slate-200 hover:border-slate-400 hover:text-slate-700'
-                }`}
-              >
-                {f.label}
-                <span className="ml-1.5 opacity-60">
-                  ({f.key === 'all' ? CERTIFICATES.length : CERTIFICATES.filter(c => c.type === f.key).length})
-                </span>
-              </button>
-            ))}
-          </div>
 
           {/* Certificate Cards */}
           <AnimatePresence mode="wait">
