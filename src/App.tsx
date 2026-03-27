@@ -119,7 +119,7 @@ const CERTIFICATES = [
     link: "https://raw.githubusercontent.com/prakashrajaa/portfolio/7d495f264239da68771e9241be64631ca689bf44/src/AIROX'2K24%20%E2%80%93%20National%20Level%20Technical%20Symposium.jpeg",
     verifiable: false
   }
-  {
+{
   title: "SSLC (10th) Marksheet",
   issuer: "State Board of School Examinations, Tamil Nadu",
   courseCode: null,
@@ -129,7 +129,7 @@ const CERTIFICATES = [
   color: "amber",
   description: "Completed Secondary School Leaving Certificate (SSLC) with 376/500 marks (75.2%).",
   skills: ["Tamil", "English", "Mathematics", "Science", "Social Science"],
-  link: "ADD_YOUR_10TH_MARKSHEET_IMAGE_LINK",
+  link: "https://raw.githubusercontent.com/prakashrajaa/portfolio/3b5ea3d51e3345e80a0e8e94a0f1864eb8749a14/src/10.jpeg",
   verifiable: false
 },
 {
@@ -142,7 +142,7 @@ const CERTIFICATES = [
   color: "sky",
   description: "Completed Higher Secondary First Year (11th Standard) successfully.",
   skills: ["Physics", "Chemistry", "Biology", "Mathematics"],
-  link: "ADD_YOUR_11TH_MARKSHEET_IMAGE_LINK",
+  link: "https://raw.githubusercontent.com/prakashrajaa/portfolio/3b5ea3d51e3345e80a0e8e94a0f1864eb8749a14/src/11.jpeg",
   verifiable: false
 },
 {
@@ -155,7 +155,7 @@ const CERTIFICATES = [
   color: "indigo",
   description: "Completed Higher Secondary Second Year (12th) with 362/600 marks (60.3%).",
   skills: ["Physics", "Chemistry", "Biology", "Mathematics"],
-  link: "ADD_YOUR_12TH_MARKSHEET_IMAGE_LINK",
+  link: "https://raw.githubusercontent.com/prakashrajaa/portfolio/3b5ea3d51e3345e80a0e8e94a0f1864eb8749a14/src/12.jpeg",
   verifiable: false
 },
 {
