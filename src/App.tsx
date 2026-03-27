@@ -68,6 +68,18 @@ const CERTIFICATES = [
     verifiable: true
   },
   {
+  title: "Data Science Certificate",
+  issuer: "Great Learning",
+  date: "2024",
+  type: "online",
+  badge: "Certified",
+  color: "indigo",
+  description: "Completed certification in Data Science / AI.",
+  skills: ["Data Science", "Machine Learning", "AI"],
+  link: "https://raw.githubusercontent.com/prakashrajaa/portfolio/1c52148c3b616ca3b046eda94bc5a1654d8874c2/src/Prakashraja%20A.pdf",
+  verifiable: true
+},
+  {
     title: "Full Stack Development",
     issuer: "Adroit Technologies Innovative Solutions Pvt. Ltd.",
     date: "August 12 – September 12, 2024",
@@ -115,6 +127,7 @@ const CERTIFICATES = [
     link: "https://raw.githubusercontent.com/prakashrajaa/portfolio/7d495f264239da68771e9241be64631ca689bf44/src/AIROX'2K24%20%E2%80%93%20National%20Level%20Technical%20Symposium.jpeg",
     verifiable: false
   },
+  
 
   // 🎓 SCHOOL MARKSHEETS
   {
