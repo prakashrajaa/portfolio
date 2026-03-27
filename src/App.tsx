@@ -104,7 +104,7 @@ const CERTIFICATES = [
     color: "violet",
     description: "Successfully completed a Value Added Course on Data Visualization using Python & R Programming during B.Tech AI & DS Degree Programme (2023–2024) at Chettinad College of Engineering & Technology, Karur.",
     skills: ["Python", "R Programming", "Data Visualization", "Matplotlib", "Seaborn"],
-    link: "https://www.chettinadtech.ac.in/",
+    link: "https://github.com/prakashrajaa/portfolio/blob/00b57f6645f4207d4c794847042f00052a0b804b/src/Data%20Visualization%20using%20Python%20%26%20R%20Programming.jpeg",
     verifiable: false
   },
   {
