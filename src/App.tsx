@@ -70,7 +70,7 @@ const CERTIFICATES = [
   {
   title: "Data Science Certificate",
   issuer: "Great Learning",
-  date: "2024",
+  date: "2026",
   type: "online",
   badge: "Certified",
   color: "indigo",
