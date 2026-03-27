@@ -62,7 +62,7 @@ const CERTIFICATES = [
     type: "online",
     badge: "IBM Certified",
     color: "indigo",
-    description: "Successfully completed and received a passing grade in Front End Technologies (CEFET1IN) provided by IBMCE. Covers JavaScript, ReactJS, Node.js and modern web development practices.",
+    description: "Completed Front End Technologies covering ReactJS, Node.js and modern web development.",
     skills: ["JavaScript", "ReactJS", "Node.js", "HTML/CSS"],
     link: "https://courses.ibmcep.cognitiveclass.ai/certificates/63d14ae0a2924959910e288156547a74",
     verifiable: true
@@ -70,135 +70,128 @@ const CERTIFICATES = [
   {
     title: "Full Stack Development",
     issuer: "Adroit Technologies Innovative Solutions Pvt. Ltd.",
-    courseCode: null,
     date: "August 12 – September 12, 2024",
     type: "course",
-    badge: "IBM Business Partner",
+    badge: "Course Completion",
     color: "sky",
-    description: "Successfully completed the Full Stack Development course.",
-    skills: ["Full Stack Development", "Web Development", "Frontend", "Backend"],
+    description: "Completed Full Stack Development course.",
+    skills: ["Frontend", "Backend", "Web Development"],
     link: "https://raw.githubusercontent.com/prakashrajaa/portfolio/7d495f264239da68771e9241be64631ca689bf44/src/Full%20Stack%20Development%20Internship.jpeg",
     verifiable: false
   },
   {
     title: "Full Stack Development Internship",
     issuer: "Adroit Technologies Innovative Solutions Pvt. Ltd., Coimbatore",
-    courseCode: null,
     date: "August 12 – September 12, 2024",
     type: "internship",
     badge: "Experience Letter",
     color: "emerald",
-    description: "Successfully completed a 1-month internship programme.",
-    skills: ["Full Stack Development", "Professional Experience", "Team Collaboration"],
+    description: "Completed 1-month internship programme.",
+    skills: ["Full Stack Development", "Team Collaboration"],
     link: "https://raw.githubusercontent.com/prakashrajaa/portfolio/7d495f264239da68771e9241be64631ca689bf44/src/IT%20tech.jpeg",
     verifiable: false
   },
   {
-    title: "Data Visualization using Python & R Programming",
+    title: "Data Visualization using Python & R",
     issuer: "Chettinad College of Engineering & Technology",
-    courseCode: null,
     date: "October 6 – October 7, 2023",
     type: "value-added",
     badge: "Value Added Course",
     color: "violet",
-    description: "Completed a course on Data Visualization using Python & R.",
-    skills: ["Python", "R Programming", "Data Visualization", "Matplotlib", "Seaborn"],
+    description: "Completed course on Data Visualization.",
+    skills: ["Python", "R", "Matplotlib"],
     link: "https://raw.githubusercontent.com/prakashrajaa/portfolio/00b57f6645f4207d4c794847042f00052a0b804b/src/Data%20Visualization%20using%20Python%20%26%20R%20Programming.jpeg",
     verifiable: false
   },
   {
-    title: "AIROX'2K24 – National Level Technical Symposium",
+    title: "AIROX'2K24 Symposium",
     issuer: "J.J. College of Engineering and Technology, Trichy",
-    courseCode: null,
     date: "November 11, 2024",
     type: "participation",
-    badge: "Certificate of Participation",
+    badge: "Participation",
     color: "amber",
-    description: "Participated in AIROX'24 National Level Symposium.",
-    skills: ["Technical Symposium", "AI & Data Science", "Networking"],
+    description: "Participated in National Level Technical Symposium.",
+    skills: ["AI", "Networking"],
     link: "https://raw.githubusercontent.com/prakashrajaa/portfolio/7d495f264239da68771e9241be64631ca689bf44/src/AIROX'2K24%20%E2%80%93%20National%20Level%20Technical%20Symposium.jpeg",
     verifiable: false
-  }
-{
-  title: "SSLC (10th) Marksheet",
-  issuer: "State Board of School Examinations, Tamil Nadu",
-  courseCode: null,
-  date: "March 2020",
-  type: "value-added",
-  badge: "Academic Record",
-  color: "amber",
-  description: "Completed Secondary School Leaving Certificate (SSLC) with 376/500 marks (75.2%).",
-  skills: ["Tamil", "English", "Mathematics", "Science", "Social Science"],
-  link: "https://raw.githubusercontent.com/prakashrajaa/portfolio/3b5ea3d51e3345e80a0e8e94a0f1864eb8749a14/src/10.jpeg",
-  verifiable: false
-},
-{
-  title: "HSC (11th) Marksheet",
-  issuer: "State Board of School Examinations, Tamil Nadu",
-  courseCode: null,
-  date: "March 2021",
-  type: "value-added",
-  badge: "Academic Record",
-  color: "sky",
-  description: "Completed Higher Secondary First Year (11th Standard) successfully.",
-  skills: ["Physics", "Chemistry", "Biology", "Mathematics"],
-  link: "https://raw.githubusercontent.com/prakashrajaa/portfolio/3b5ea3d51e3345e80a0e8e94a0f1864eb8749a14/src/11.jpeg",
-  verifiable: false
-},
-{
-  title: "HSC (12th) Marksheet",
-  issuer: "State Board of School Examinations, Tamil Nadu",
-  courseCode: null,
-  date: "May 2022",
-  type: "value-added",
-  badge: "Academic Record",
-  color: "indigo",
-  description: "Completed Higher Secondary Second Year (12th) with 362/600 marks (60.3%).",
-  skills: ["Physics", "Chemistry", "Biology", "Mathematics"],
-  link: "https://raw.githubusercontent.com/prakashrajaa/portfolio/3b5ea3d51e3345e80a0e8e94a0f1864eb8749a14/src/12.jpeg",
-  verifiable: false
-},
-{
-  title: "B.Tech Semester I Marksheet",
-  issuer: "Anna University, Chennai",
-  courseCode: null,
-  date: "2022",
-  type: "value-added",
-  badge: "University Record",
-  color: "violet",
-  description: "Semester I academic marksheet under Anna University.",
-  skills: ["Mathematics", "Engineering Basics"],
-  link: "ADD_SEM1_MARKSHEET_LINK",
-  verifiable: false
-},
-{
-  title: "B.Tech Semester II Marksheet",
-  issuer: "Anna University, Chennai",
-  courseCode: null,
-  date: "2023",
-  type: "value-added",
-  badge: "University Record",
-  color: "emerald",
-  description: "Semester II academic marksheet under Anna University.",
-  skills: ["Programming", "Data Structures"],
-  link: "ADD_SEM2_MARKSHEET_LINK",
-  verifiable: false
-},
-{
-  title: "B.Tech Semester III Marksheet",
-  issuer: "Anna University, Chennai",
-  courseCode: null,
-  date: "Nov 2023",
-  type: "value-added",
-  badge: "University Record",
-  color: "indigo",
-  description: "Semester III marksheet with GPA 6.826 (CGPA: 6.69).",
-  skills: ["AI", "Database", "Algorithms", "Data Visualization"],
-  link: "ADD_SEM3_MARKSHEET_LINK",
-  verifiable: false
-}
-];
+  },
 
+  // 🎓 SCHOOL MARKSHEETS
+  {
+    title: "SSLC (10th)",
+    issuer: "Tamil Nadu State Board",
+    date: "March 2020",
+    type: "value-added",
+    badge: "Academic Record",
+    color: "amber",
+    description: "376/500 (75.2%)",
+    skills: ["Tamil", "English", "Maths"],
+    link: "https://raw.githubusercontent.com/prakashrajaa/portfolio/3b5ea3d51e3345e80a0e8e94a0f1864eb8749a14/src/10.jpeg",
+    verifiable: false
+  },
+  {
+    title: "HSC (11th)",
+    issuer: "Tamil Nadu State Board",
+    date: "March 2021",
+    type: "value-added",
+    badge: "Academic Record",
+    color: "sky",
+    description: "Completed successfully.",
+    skills: ["Physics", "Chemistry", "Biology"],
+    link: "https://raw.githubusercontent.com/prakashrajaa/portfolio/3b5ea3d51e3345e80a0e8e94a0f1864eb8749a14/src/11.jpeg",
+    verifiable: false
+  },
+  {
+    title: "HSC (12th)",
+    issuer: "Tamil Nadu State Board",
+    date: "May 2022",
+    type: "value-added",
+    badge: "Academic Record",
+    color: "indigo",
+    description: "362/600 (60.3%)",
+    skills: ["Physics", "Chemistry", "Biology"],
+    link: "https://raw.githubusercontent.com/prakashrajaa/portfolio/3b5ea3d51e3345e80a0e8e94a0f1864eb8749a14/src/12.jpeg",
+    verifiable: false
+  },
+
+  // 🎓 COLLEGE SEM MARKSHEETS
+  {
+    title: "Semester I",
+    issuer: "Anna University",
+    date: "2022",
+    type: "value-added",
+    badge: "University Record",
+    color: "violet",
+    description: "Semester I marksheet.",
+    skills: ["Maths", "Basics"],
+    link: "https://raw.githubusercontent.com/prakashrajaa/portfolio/94c94fa825669b71acd4e7b0526c19a645d6c701/src/1.jpeg",
+    verifiable: false
+  },
+  {
+    title: "Semester II",
+    issuer: "Anna University",
+    date: "2023",
+    type: "value-added",
+    badge: "University Record",
+    color: "emerald",
+    description: "Semester II marksheet.",
+    skills: ["Programming", "DS"],
+    link: "https://raw.githubusercontent.com/prakashrajaa/portfolio/94c94fa825669b71acd4e7b0526c19a645d6c701/src/2.jpeg",
+    verifiable: false
+  },
+  {
+    title: "Semester III",
+    issuer: "Anna University",
+    date: "Nov 2023",
+    type: "value-added",
+    badge: "University Record",
+    color: "indigo",
+    description: "GPA 6.826 (CGPA 6.69)",
+    skills: ["AI", "DB", "Algorithms"],
+    link: "https://raw.githubusercontent.com/prakashrajaa/portfolio/94c94fa825669b71acd4e7b0526c19a645d6c701/src/3.jpeg",
+    verifiable: false
+  }
+];
 const CERT_COLORS = {
   indigo: {
     bg: "from-indigo-600 via-indigo-700 to-slate-800",
